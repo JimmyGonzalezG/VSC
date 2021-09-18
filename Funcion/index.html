@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--frayosorio@gmail.com-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafica Función</title>
+    <script>
+        //obtener el graficador del canvas
+        //var cnv = document.getElementById("cnvGrafica");
+        //var ctx = cnv.getContext("2d");
+        //var ancho = cnv.width;
+        //var alto = cnv.height;
+        //Limpiar();
+
+        function Limpiar() {
+            ctx.beginPath();
+            ctx.rect(0, 0, ancho, alto);
+            ctx.fillStyle = "white";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function f(x) {
+            // captura el objeto combobox
+            var cmbFuncion = document.getElementById("cmbFuncion");
+            //dependiendo del valor seleccionado 
+            switch (cmbFuncion.value) {
+                case "1": //como hay un return no necesita break
+                    return Math.sin(x);
+
+                case "2":
+                    return Math.cos(x);
+
+                case "3":
+                    return Math.tan(x);
+
+                case "4":
+                    return Math.pow(x, 2);
+
+                case "5":
+                    return Math.pow(x, 3);
+
+            }
+        }
+        
+        function trazarLinea(x1, y1, x2, y2) {
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.closePath();
+                ctx.stroke();
+            }
+
+        function graficar() {
+            
+            //windows.alert('Hola');
+            //obtener objeto de la interfaz html
+            var txtli = document.getElementById("txtInicial");
+            //obtener el valor digitado en l a caja de texto
+            var xMin = eval(txtli.value); //castear el numero ingresado de string a numero
+
+            var txtls = document.getElementById("txtFinal");
+            var xMax = eval(txtls.value);
+
+            var yMax = 0;
+            var yMin = 0;
+            var incX = (xMax - xMin) / ancho;
+
+            for (var x = xMin; x < xMax; x += incX) {
+                var fx = f(x);
+                if (x == xMin) {
+                    yMax = fx;
+                    yMin = fx;
+                }
+                else if (fx > yMax) {
+                    yMax = fx;
+                }
+                else if (fx < yMin) {
+                    yMin = fx;
+                }
+            }
+            
+            var incY = (yMax - yMin) / alto;
+            //Limpiar();
+            var xP = 0;
+            var yP = 0;
+            //trazar los ejes
+            if (xMin <= 0 && 0 <= xMax) {
+                xP = (0 - xMin) / incX;
+
+                //trazr eje Y
+                trazarLinea(xP,yP,xP,alto)
+            }
+
+            if (yMin <= 0 && 0 <= yMax) {
+                yP = (0 - yMin) / incY;
+
+                //trazr eje Y
+                trazarLinea(0,yP,ancho,yP)
+
+            }
+            var xP0=0;
+            var x = xMin;
+            var y= f(x);
+            var yP0=(yMax-y)/incY;
+            for(xP=1;xp<=ancho;xP++){
+                x+=incX;
+                y=f(x);
+                yP=(yMax-y)/incY;
+                trazarLinea(xP0,yP0,xP,yP);
+                xP0=xP;
+                yP0=yP;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <!--# fila -->
+            <td colspan="2">
+                <!--//columna expandida 2 columnas-->
+                Gráfica de Funciones
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Función
+            </td>
+            <td>
+                <select id="cmbFuncion">
+                    <!--Lista desplegable-->
+                    <option value="1">Sin</option>
+                    <!--OPciones de lista-->
+                    <option value="2">Cos</option>
+                    <option value="3">Tan</option>
+                    <option value="4">Cuadratic</option>
+                    <option value="5">Cubic</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X inicial
+            </td>
+            <td>
+                <input type="number" id="txtInicial">
+                <!--Ingreso de datos-->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                X Final
+            </td>
+            <td>
+                <input type="number" id="txtFinal">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="Graficar2" title="prueba">
+                <!--Se puede crear botones co input tambien-->
+                <button onclick="graficar();" title="ayuda del boton">Graficar</button>
+                <!--LLama la funcion graficar cuando se de cllick-->
+                <!--  <img src="1.png" width="20%"> Agregar imagenes y modificar tamaño
+                    <br> salto de linea
+                -->
+
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">
+                <canvas id="cnvGrafica" width="600" height="400" style="border: 1px solid #000000;"></canvas>
+                <!--Lienzo-->
+            </td>
+
+        </tr>
+    </table>
+</body>
+<script>
+    var cnv = document.getElementById("cnvGrafica");
+    var ctx = cnv.getContext("2d");
+    var ancho = cnv.width;
+    var alto = cnv.height;
+   
+
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Cartas</title>
+    <script src="Carta.js"></script>
+    <link href="Estilos.css" rel="stylesheet" type="text/css">
+    <script>
+        var cartas = [];
+
+        function repartir() {
+            for (var i = 0; i <= 10; i++) {
+                carta = new Carta();
+                cartas.push(carta);
+                var mesa = document.getElementById("mesa");
+                var imgCarta = document.createElement("img");
+                imgCarta.src = carta.obtenerImagen();
+                mesa.appendChild(imgCarta);
+                }
+            cartas.remove();
+        }
+
+        function verificar(){
+            if(cartas.length>0){
+                var contador =[];
+                for(var i;i<13;i++){
+                    contador.push(0);
+                }
+                for(var i; i<cartas.length;i++){
+                    contador[cartas[i].obtenerIndiceNombre()]++;
+                }
+                var grupo =[];
+                var nombre=["AS", "1",];
+                for(var i=0; i<13;i++){
+                    if(contador[i]>=2){
+                        mensaje+="\n"+grupo[contador[i]+ "de" + nombre[i]];
+                    }
+                }
+            }
+            else{
+                window.alert("Hay cartas repartidas");
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <header class="superior">
+        <h1 class="title">Menu</h1>
+    </header>
+    <div class="container">
+        <button class="btn1" onclick="repartir();">
+            <img class="repartir" src="Imagenes/Repartir.png">
+        </button>
+        <button class="btn2" onclick="verificar();">
+            <img class="verificar" src="Imagenes/Verificar.png">
+        </button>
+    </div>
+    <div class="mesa" id="mesa">
+
+    </div>
+</body>
+
+</html>
