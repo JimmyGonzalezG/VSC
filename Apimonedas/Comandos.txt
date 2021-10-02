@@ -1,0 +1,9 @@
+npm init -y para iniciar proyecto
+npm i express --save iniciar express para backend frameword para nodejs
+npm i mysql pra cfrear la conexion a la backend (i o instalar)
+npm i instala las librerias
+Modelo Vista Controlador la vista (html,css,js,react),
+    Modelo (conexion a bd, express),
+    Conrolador (js un los dos mundos de vista y controlador),
+
+ejecutar node app.js
