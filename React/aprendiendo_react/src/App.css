@@ -1,0 +1,74 @@
+
+.App {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(224, 224, 224, 0.755);
+    position: absolute;
+    height: 100%;
+    width: 100%; 
+
+}
+
+h1{
+    text-align: center;
+    color: grey;
+    padding: 0%;
+    
+}
+h2{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin: 100px auto;
+}
+
+.login{
+    margin: 90px auto 0 auto;
+    width: 300px;
+    height: 400px;
+    background-color: rgb(145, 145, 145);
+    padding: 0;
+    border-radius: 10px;   
+
+}
+
+.login .Login{
+    
+    size: auto;
+    border-radius: 5px;
+    background-color: rgb(54, 41, 150);
+    color: aliceblue;
+    box-shadow: 2px;   
+    margin: 50px auto auto 120px;
+    
+}
+
+.div-log{
+    margin: 90px auto 0 auto;
+    width: 300px;
+    height: 400px;
+    background-color: rgb(123, 121, 121);
+    padding: 0;
+    border-radius: 10px;
+}
+
+
+.logout{
+    border-radius: 5px;
+    background-color: rgb(106, 32, 32);
+    color: aliceblue;
+    box-shadow: 2px;
+}
+
+
+
+.logo{
+    align-items: center;
+    border-radius: 20px;
+    margin: 20px auto 0 75px; 
+
+}
+
+img{
+    box-shadow: 100px;
+}
+
