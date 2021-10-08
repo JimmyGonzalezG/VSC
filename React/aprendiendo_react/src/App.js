@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { Component } from 'react';
 import './App.css';
+import './Components/Productos/RegistroProductos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { LoginButton } from './Components/Login/Login';
-import { LogoutButton } from './Components/Login/Logout';
-import { Profile } from './Components/Login/Profile';
-import Productos from './Components/Productos/RegistroProductos'
+import Productos from './Components/Productos/RegistroProductos';
+
+
 
 
 class App extends Component {
@@ -15,21 +15,21 @@ class App extends Component {
       name: 'React'
     };
   }
-  render() {
 
-    return (
+ 
+render() {
 
-      <div>
-        <h1>Aplicación Registro de Ventas</h1>
-        <div className="App">
-          <LoginButton />
-          <Productos />
-          <Profile />
-          <LogoutButton />
+  return (
 
-        </div>
-      </div>
-    );
-  }
+    <div className="App">
+
+      <h1>Aplicación Registro de Ventas</h1>
+      
+       {/*<LoginButton />*/}
+        <Productos />
+      
+    </div>
+  );
+}
 }
 export default App;
